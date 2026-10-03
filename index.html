@@ -3,19 +3,2355 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的第一个网站</title>
+
+    <title>杨繁 · 个人主页</title>
+
+    <style>
+
+        /* =========================
+           1. 全局设置
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            font-family:
+                "Microsoft YaHei",
+                "PingFang SC",
+                Arial,
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(0, 204, 255, 0.12),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 80% 30%,
+                    rgba(132, 0, 255, 0.12),
+                    transparent 35%
+                ),
+
+                #050810;
+
+            color: white;
+
+            overflow-x: hidden;
+        }
+
+
+
+        /* =========================
+           2. 星空背景
+        ========================== */
+
+        #stars {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            z-index: -1;
+
+        }
+
+
+
+        /* =========================
+           3. 导航栏
+        ========================== */
+
+        nav {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 70px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 8%;
+
+            background:
+                rgba(5, 8, 16, 0.70);
+
+            backdrop-filter:
+                blur(20px);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
+
+            z-index: 1000;
+
+        }
+
+
+        .logo {
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            letter-spacing: 3px;
+
+        }
+
+
+        .logo span {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #5de0ff,
+                    #ad78ff
+                );
+
+            -webkit-background-clip: text;
+
+            color: transparent;
+
+        }
+
+
+        nav ul {
+
+            display: flex;
+
+            list-style: none;
+
+            gap: 30px;
+
+        }
+
+
+        nav a {
+
+            color: #bbb;
+
+            text-decoration: none;
+
+            transition: 0.3s;
+
+        }
+
+
+        nav a:hover {
+
+            color: white;
+
+        }
+
+
+
+        /* =========================
+           4. 首页 Hero
+        ========================== */
+
+        .hero {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 120px 10% 80px;
+
+            gap: 50px;
+
+        }
+
+
+        .hero-left {
+
+            width: 55%;
+
+        }
+
+
+        .hello {
+
+            color: #68e4ff;
+
+            font-size: 16px;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .hero h1 {
+
+            font-size: 100px;
+
+            line-height: 1;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .hero h1 span {
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #65e6ff,
+                    #b57cff
+                );
+
+            -webkit-background-clip: text;
+
+            color: transparent;
+
+        }
+
+
+        .hero-desc {
+
+            font-size: 21px;
+
+            color: #b8bfd0;
+
+            line-height: 2;
+
+            max-width: 700px;
+
+        }
+
+
+        .hero-desc strong {
+
+            color: white;
+
+        }
+
+
+
+        /* 按钮 */
+
+        .buttons {
+
+            margin-top: 35px;
+
+            display: flex;
+
+            gap: 18px;
+
+        }
+
+
+        .btn {
+
+            padding:
+
+                14px 28px;
+
+            border-radius: 12px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+
+        }
+
+
+        .btn-primary {
+
+            color: #071019;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #64e5ff,
+                    #9b7eff
+                );
+
+        }
+
+
+        .btn-secondary {
+
+            color: white;
+
+            border:
+
+                1px solid
+                rgba(255,255,255,0.2);
+
+            background:
+                rgba(255,255,255,0.05);
+
+        }
+
+
+        .btn:hover {
+
+            transform:
+                translateY(-4px);
+
+        }
+
+
+
+        /* =========================
+           右侧人物卡片
+        ========================== */
+
+        .hero-card {
+
+            width: 380px;
+
+            min-height: 470px;
+
+            border-radius: 30px;
+
+            padding: 35px;
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.12),
+                    rgba(255,255,255,0.03)
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,0.15);
+
+            backdrop-filter:
+                blur(20px);
+
+            box-shadow:
+
+                0 30px 80px
+                rgba(0,0,0,0.50);
+
+        }
+
+
+        .avatar {
+
+            width: 140px;
+
+            height: 140px;
+
+            margin-bottom: 30px;
+
+            border-radius: 30px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 42px;
+
+            font-weight: bold;
+
+            color: #071019;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #6feaff,
+                    #bb84ff
+                );
+
+            box-shadow:
+
+                0 20px 60px
+                rgba(76, 212, 255, 0.25);
+
+        }
+
+
+        .hero-card h2 {
+
+            font-size: 35px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .hero-card p {
+
+            color: #aeb7ca;
+
+            line-height: 1.8;
+
+        }
+
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 12px;
+
+            margin-top: 30px;
+
+        }
+
+
+        .stat {
+
+            padding: 18px;
+
+            border-radius: 16px;
+
+            background:
+                rgba(255,255,255,0.05);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+        }
+
+
+        .stat strong {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-size: 18px;
+
+        }
+
+
+        .stat span {
+
+            color: #8490a8;
+
+            font-size: 13px;
+
+        }
+
+
+
+        /* =========================
+           通用 Section
+        ========================== */
+
+        section {
+
+            padding:
+
+                110px 10%;
+
+        }
+
+
+        .section-tag {
+
+            color: #5be7ff;
+
+            letter-spacing: 5px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+        }
+
+
+        .section-title {
+
+            font-size: 55px;
+
+            margin:
+
+                15px 0 50px;
+
+        }
+
+
+
+        /* =========================
+           个人信息卡片
+        ========================== */
+
+        .info-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+
+        }
+
+
+        .info-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            min-height: 300px;
+
+            padding: 32px;
+
+            border-radius: 25px;
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.08),
+                    rgba(255,255,255,0.025)
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,0.1);
+
+            transition: 0.4s;
+
+        }
+
+
+        .info-card:hover {
+
+            transform:
+                translateY(-10px);
+
+            border-color:
+                rgba(94, 231, 255, 0.40);
+
+        }
+
+
+        .info-icon {
+
+            width: 60px;
+
+            height: 60px;
+
+            border-radius: 18px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 30px;
+
+            margin-bottom: 28px;
+
+            background:
+                rgba(255,255,255,0.07);
+
+        }
+
+
+        .info-card h3 {
+
+            font-size: 25px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .info-card p {
+
+            color: #9da8bd;
+
+            line-height: 1.9;
+
+            font-size: 16px;
+
+        }
+
+
+        .info-card strong {
+
+            color: white;
+
+        }
+
+
+
+        /* =========================
+           经历区域
+        ========================== */
+
+        .journey {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 35px;
+
+        }
+
+
+        .journey-image {
+
+            min-height: 500px;
+
+            border-radius: 30px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+
+                radial-gradient(
+                    circle at 50% 35%,
+                    rgba(89, 229, 255, 0.25),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    145deg,
+                    #0a162e,
+                    #18142f
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,0.12);
+
+        }
+
+
+
+        /* 科技城市插画 */
+
+        .city-sun {
+
+            width: 160px;
+
+            height: 160px;
+
+            border-radius: 50%;
+
+            position: absolute;
+
+            top: 90px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #6de7ff,
+                    #a774ff
+                );
+
+            box-shadow:
+
+                0 0 80px
+                rgba(102, 211, 255, 0.3);
+
+        }
+
+
+        .building {
+
+            position: absolute;
+
+            bottom: 0;
+
+            background: #070c16;
+
+            border-top:
+                1px solid
+                #54e9ff;
+
+        }
+
+
+        .b1 {
+
+            width: 120px;
+
+            height: 210px;
+
+            left: 8%;
+
+        }
+
+
+        .b2 {
+
+            width: 150px;
+
+            height: 300px;
+
+            left: 30%;
+
+        }
+
+
+        .b3 {
+
+            width: 130px;
+
+            height: 240px;
+
+            left: 58%;
+
+        }
+
+
+        .b4 {
+
+            width: 100px;
+
+            height: 340px;
+
+            right: 4%;
+
+        }
+
+
+
+        /* =========================
+           时间线
+        ========================== */
+
+        .timeline {
+
+            padding: 30px;
+
+        }
+
+
+        .timeline-item {
+
+            position: relative;
+
+            padding:
+
+                5px 0 35px 50px;
+
+            border-left:
+                2px solid
+                rgba(91, 231, 255, 0.25);
+
+        }
+
+
+        .timeline-item::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 18px;
+
+            height: 18px;
+
+            left: -10px;
+
+            top: 5px;
+
+            border-radius: 50%;
+
+            background: #5ce4ff;
+
+            box-shadow:
+                0 0 20px
+                #5ce4ff;
+
+        }
+
+
+        .timeline-item h3 {
+
+            font-size: 23px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .timeline-item p {
+
+            color: #9ca8bd;
+
+            line-height: 1.8;
+
+        }
+
+
+
+        /* =========================
+           感谢导师区域
+        ========================== */
+
+        .thanks-box {
+
+            padding: 60px;
+
+            border-radius: 30px;
+
+            background:
+
+                radial-gradient(
+                    circle at 90% 10%,
+                    rgba(173, 113, 255, 0.2),
+                    transparent 35%
+                ),
+
+                rgba(255,255,255,0.05);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.10);
+
+        }
+
+
+        .quote {
+
+            font-size: 75px;
+
+            color: #5ee6ff;
+
+        }
+
+
+        .thanks-box h2 {
+
+            font-size: 45px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .thanks-box p {
+
+            max-width: 900px;
+
+            font-size: 18px;
+
+            color: #abb5c8;
+
+            line-height: 2;
+
+        }
+
+
+        .thanks-box strong {
+
+            color: white;
+
+        }
+
+
+
+        /* =========================
+           红色爱国主义区域
+        ========================== */
+
+        .patriot {
+
+            position: relative;
+
+            overflow: hidden;
+
+            min-height: 680px;
+
+            display: flex;
+
+            align-items: center;
+
+            background:
+
+                radial-gradient(
+                    circle at 80% 30%,
+                    rgba(255, 202, 65, 0.22),
+                    transparent 25%
+                ),
+
+                radial-gradient(
+                    circle at 20% 70%,
+                    rgba(255, 80, 80, 0.35),
+                    transparent 35%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #430000,
+                    #8f0000 45%,
+                    #d00000
+                );
+
+        }
+
+
+
+        .patriot::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+
+            height: 500px;
+
+            right: -100px;
+
+            top: -150px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255, 215, 0, 0.08);
+
+        }
+
+
+
+        .patriot-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 800px;
+
+        }
+
+
+        .patriot-label {
+
+            display: inline-block;
+
+            margin-bottom: 25px;
+
+            padding:
+
+                8px 18px;
+
+            border-radius: 999px;
+
+            border:
+                1px solid
+                rgba(255, 215, 0, 0.50);
+
+            color: #ffe88a;
+
+            background:
+                rgba(255, 215, 0, 0.08);
+
+        }
+
+
+        .patriot h2 {
+
+            font-size: 65px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .patriot p {
+
+            font-size: 21px;
+
+            line-height: 2;
+
+            color: #ffe9e9;
+
+        }
+
+
+
+        /* 五星区域 */
+
+        .stars-cn {
+
+            position: absolute;
+
+            right: 8%;
+
+            top: 22%;
+
+            width: 300px;
+
+            height: 300px;
+
+        }
+
+
+        .star {
+
+            position: absolute;
+
+            color: #ffd700;
+
+            text-shadow:
+
+                0 0 25px
+                rgba(255,215,0,0.55);
+
+        }
+
+
+        .star-big {
+
+            font-size: 120px;
+
+            top: 40px;
+
+            left: 0;
+
+        }
+
+
+        .star-small1 {
+
+            font-size: 45px;
+
+            left: 140px;
+
+            top: 0;
+
+        }
+
+
+        .star-small2 {
+
+            font-size: 45px;
+
+            left: 185px;
+
+            top: 60px;
+
+        }
+
+
+        .star-small3 {
+
+            font-size: 45px;
+
+            left: 185px;
+
+            top: 125px;
+
+        }
+
+
+        .star-small4 {
+
+            font-size: 45px;
+
+            left: 140px;
+
+            top: 175px;
+
+        }
+
+
+
+        /* 升旗台 */
+
+        .flag-stage {
+
+            margin-top: 45px;
+
+            width: 500px;
+
+            max-width: 100%;
+
+            height: 110px;
+
+            position: relative;
+
+        }
+
+
+        .flag-pole {
+
+            position: absolute;
+
+            left: 30px;
+
+            bottom: 0;
+
+            width: 6px;
+
+            height: 100px;
+
+            background:
+
+                linear-gradient(
+                    white,
+                    #aaa
+                );
+
+        }
+
+
+        .flag {
+
+            position: absolute;
+
+            left: 36px;
+
+            top: 5px;
+
+            width: 110px;
+
+            height: 70px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #ff1919,
+                    #b50000
+                );
+
+            box-shadow:
+
+                0 10px 30px
+                rgba(0,0,0,0.25);
+
+        }
+
+
+        .flag::before {
+
+            content: "★";
+
+            color: #ffd700;
+
+            font-size: 30px;
+
+            position: absolute;
+
+            left: 12px;
+
+            top: 4px;
+
+        }
+
+
+        .flag-base {
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: 0;
+
+            width: 170px;
+
+            height: 14px;
+
+            border-radius: 5px;
+
+            background: #e2e2e2;
+
+        }
+
+
+
+        /* =========================
+           页脚
+        ========================== */
+
+        footer {
+
+            padding: 50px;
+
+            text-align: center;
+
+            color: #657089;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.05);
+
+        }
+
+
+
+        /* =========================
+           渐入动画
+        ========================== */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform:
+                translateY(40px);
+
+            transition:
+                0.8s;
+
+        }
+
+
+        .reveal.active {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+
+        }
+
+
+
+        /* =========================
+           手机自适应
+        ========================== */
+
+        @media(max-width: 900px) {
+
+            nav ul {
+                display: none;
+            }
+
+
+            .hero {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+
+            .hero-left {
+
+                width: 100%;
+
+            }
+
+
+            .hero h1 {
+
+                font-size: 70px;
+
+            }
+
+
+            .hero-card {
+
+                width: 100%;
+
+            }
+
+
+            .info-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .journey {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .stars-cn {
+
+                opacity: 0.25;
+
+                right: -50px;
+
+            }
+
+
+            .patriot h2 {
+
+                font-size: 45px;
+
+            }
+
+        }
+
+    </style>
+
 </head>
+
+
 
 <body>
 
-    <h1>你好，这是我的第一个网站</h1>
 
-    <p>这个页面已经部署到公网了。</p>
+<!-- 星空 -->
 
-    <button onclick="alert('你好！')">
-        点我
-    </button>
+<canvas id="stars"></canvas>
+
+
+
+<!-- =========================
+     导航栏
+========================== -->
+
+<nav>
+
+    <div class="logo">
+
+        <span>YANG FAN</span>
+
+    </div>
+
+
+    <ul>
+
+        <li>
+            <a href="#home">
+                首页
+            </a>
+        </li>
+
+        <li>
+            <a href="#about">
+                关于我
+            </a>
+        </li>
+
+        <li>
+            <a href="#journey">
+                经历
+            </a>
+        </li>
+
+        <li>
+            <a href="#thanks">
+                致谢
+            </a>
+        </li>
+
+        <li>
+            <a href="#patriot">
+                家国情怀
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+
+<!-- =========================
+     首页
+========================== -->
+
+<div
+    class="hero"
+    id="home"
+>
+
+
+    <div
+        class="hero-left reveal"
+    >
+
+        <div class="hello">
+
+            HELLO WORLD · PERSONAL HOMEPAGE
+
+        </div>
+
+
+        <h1>
+
+            你好，我是
+
+            <br>
+
+            <span>
+                杨繁
+            </span>
+
+        </h1>
+
+
+        <p class="hero-desc">
+
+            我是
+
+            <strong>
+                西安电子科技大学硕士
+            </strong>
+
+            。
+
+            <br>
+
+            保持热爱，持续探索，
+
+            在学习、科研与技术成长的道路上
+
+            不断突破自己的边界。
+
+        </p>
+
+
+        <div class="buttons">
+
+            <a
+                href="#about"
+                class="btn btn-primary"
+            >
+
+                了解我
+
+            </a>
+
+
+            <a
+                href="#patriot"
+                class="btn btn-secondary"
+            >
+
+                我的家国情怀
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <div
+        class="hero-card reveal"
+    >
+
+        <div class="avatar">
+
+            杨繁
+
+        </div>
+
+
+        <h2>
+
+            杨繁
+
+        </h2>
+
+
+        <p>
+
+            西安电子科技大学
+
+            <br>
+
+            硕士研究生
+
+        </p>
+
+
+
+        <div class="stats">
+
+
+            <div class="stat">
+
+                <strong>
+
+                    华为天才少年
+
+                </strong>
+
+                <span>
+
+                    成长经历
+
+                </span>
+
+            </div>
+
+
+
+            <div class="stat">
+
+                <strong>
+
+                    500 万
+
+                </strong>
+
+                <span>
+
+                    年薪
+
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =========================
+     关于我
+========================== -->
+
+<section id="about">
+
+
+    <div class="section-tag">
+
+        ABOUT ME
+
+    </div>
+
+
+    <h2 class="section-title">
+
+        关于我
+
+    </h2>
+
+
+
+    <div class="info-grid">
+
+
+        <div class="info-card reveal">
+
+
+            <div class="info-icon">
+
+                🎓
+
+            </div>
+
+
+            <h3>
+
+                西电硕士
+
+            </h3>
+
+
+            <p>
+
+                我叫
+
+                <strong>
+                    杨繁
+                </strong>
+
+                ，目前是
+
+                <strong>
+                    西安电子科技大学硕士
+                </strong>
+
+                。
+
+                在研究生阶段，
+
+                我持续提升自己的专业能力，
+
+                拓展技术视野，
+
+                探索更多可能。
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="info-card reveal">
+
+
+            <div class="info-icon">
+
+                🚀
+
+            </div>
+
+
+            <h3>
+
+                华为天才少年
+
+            </h3>
+
+
+            <p>
+
+                我已评选为
+
+                <strong>
+                    华为天才少年
+                </strong>
+
+                ，
+
+                年薪
+
+                <strong>
+                    500 万
+                </strong>
+
+                。
+
+                这段经历也让我更加坚定：
+
+                真正的成长来自长期学习、
+
+                不断积累与持续突破。
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="info-card reveal">
+
+
+            <div class="info-icon">
+
+                ❤️
+
+            </div>
+
+
+            <h3>
+
+                感恩与成长
+
+            </h3>
+
+
+            <p>
+
+                在个人成长道路上，
+
+                我始终感恩那些给予我帮助、
+
+                指导和支持的人。
+
+                <br><br>
+
+                每一份帮助，
+
+                都成为我继续前进的重要力量。
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================
+     成长经历
+========================== -->
+
+<section id="journey">
+
+
+    <div class="section-tag">
+
+        MY JOURNEY
+
+    </div>
+
+
+    <h2 class="section-title">
+
+        一路走来
+
+    </h2>
+
+
+
+    <div class="journey">
+
+
+        <!-- 左侧科技插画 -->
+
+        <div class="journey-image reveal">
+
+
+            <div class="city-sun"></div>
+
+
+            <div class="building b1"></div>
+
+            <div class="building b2"></div>
+
+            <div class="building b3"></div>
+
+            <div class="building b4"></div>
+
+
+        </div>
+
+
+
+        <!-- 右侧时间线 -->
+
+        <div class="timeline reveal">
+
+
+            <div class="timeline-item">
+
+
+                <h3>
+
+                    本科阶段
+
+                </h3>
+
+
+                <p>
+
+                    在太原理工大学学习成长，
+
+                    并得到本科导师
+
+                    黄丽霞老师
+
+                    的指导与帮助。
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="timeline-item">
+
+
+                <h3>
+
+                    硕士阶段
+
+                </h3>
+
+
+                <p>
+
+                    进入西安电子科技大学继续深造，
+
+                    不断拓展专业能力、
+
+                    科研能力与技术视野。
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="timeline-item">
+
+
+                <h3>
+
+                    新的阶段
+
+                </h3>
+
+
+                <p>
+
+                    入选华为天才少年，
+
+                    继续朝着更高的目标前进，
+
+                    在新的平台迎接新的挑战。
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================
+     导师感谢
+========================== -->
+
+<section id="thanks">
+
+
+    <div class="thanks-box reveal">
+
+
+        <div class="quote">
+
+            “
+
+        </div>
+
+
+        <h2>
+
+            感谢我的本科导师
+
+        </h2>
+
+
+        <p>
+
+            我非常感谢我的本科导师——
+
+            <strong>
+
+                太原理工大学黄丽霞老师
+
+            </strong>
+
+            。
+
+            <br><br>
+
+            感谢黄老师在本科阶段给予我的指导、
+
+            帮助与支持。
+
+            老师给予我的不仅是知识上的指导，
+
+            更让我懂得了坚持、
+
+            努力与成长的意义。
+
+            <br><br>
+
+            一段好的师生关系，
+
+            不只是知识的传递，
+
+            也会成为一个人在成长道路上
+
+            非常重要的力量。
+
+        </p>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================
+     爱国主义区域
+========================== -->
+
+<section
+    class="patriot"
+    id="patriot"
+>
+
+
+    <!-- 五星 -->
+
+    <div class="stars-cn">
+
+
+        <div class="star star-big">
+
+            ★
+
+        </div>
+
+
+        <div class="star star-small1">
+
+            ★
+
+        </div>
+
+
+        <div class="star star-small2">
+
+            ★
+
+        </div>
+
+
+        <div class="star star-small3">
+
+            ★
+
+        </div>
+
+
+        <div class="star star-small4">
+
+            ★
+
+        </div>
+
+
+    </div>
+
+
+
+    <div
+        class="patriot-content reveal"
+    >
+
+
+        <div class="patriot-label">
+
+            🇨🇳 家国情怀 · LOVE MY COUNTRY
+
+        </div>
+
+
+        <h2>
+
+            心中有信仰
+
+            <br>
+
+            脚下有力量
+
+        </h2>
+
+
+
+        <p>
+
+            我非常热爱自己的祖国。
+
+            <br><br>
+
+            我每天都会关注和观看升国旗，
+
+            当五星红旗冉冉升起时，
+
+            那份庄严、责任感与自豪感，
+
+            始终激励着我继续努力。
+
+            <br><br>
+
+            无论未来走到哪里，
+
+            我都希望能够保持初心，
+
+            学好知识、做好科研、提升能力，
+
+            用自己的方式创造价值。
+
+        </p>
+
+
+
+        <!-- 红旗视觉 -->
+
+        <div class="flag-stage">
+
+
+            <div class="flag-pole"></div>
+
+
+            <div class="flag"></div>
+
+
+            <div class="flag-base"></div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================
+     页脚
+========================== -->
+
+<footer>
+
+    © 2026 Yang Fan
+
+    <br><br>
+
+    Built with
+
+    Curiosity · Gratitude · Ambition · ❤️ China
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================
+   星空背景
+========================== */
+
+
+const canvas =
+document.getElementById("stars");
+
+
+const ctx =
+canvas.getContext("2d");
+
+
+let stars = [];
+
+
+
+function resizeCanvas() {
+
+
+    canvas.width =
+        window.innerWidth;
+
+
+    canvas.height =
+        window.innerHeight;
+
+
+    createStars();
+
+}
+
+
+
+function createStars() {
+
+
+    stars = [];
+
+
+    for (
+        let i = 0;
+        i < 110;
+        i++
+    ) {
+
+
+        stars.push({
+
+            x:
+                Math.random()
+                *
+                canvas.width,
+
+            y:
+                Math.random()
+                *
+                canvas.height,
+
+            radius:
+                Math.random()
+                *
+                1.6,
+
+            speed:
+                Math.random()
+                *
+                0.25
+                +
+                0.05,
+
+            alpha:
+                Math.random()
+                *
+                0.7
+                +
+                0.2
+
+        });
+
+
+    }
+
+}
+
+
+
+function animateStars() {
+
+
+    ctx.clearRect(
+
+        0,
+
+        0,
+
+        canvas.width,
+
+        canvas.height
+
+    );
+
+
+    stars.forEach(
+
+        star => {
+
+
+            star.y +=
+                star.speed;
+
+
+            if (
+
+                star.y >
+                canvas.height
+
+            ) {
+
+
+                star.y = 0;
+
+
+                star.x =
+
+                    Math.random()
+
+                    *
+
+                    canvas.width;
+
+            }
+
+
+            ctx.beginPath();
+
+
+            ctx.arc(
+
+                star.x,
+
+                star.y,
+
+                star.radius,
+
+                0,
+
+                Math.PI * 2
+
+            );
+
+
+            ctx.fillStyle =
+
+                `rgba(
+                    190,
+                    230,
+                    255,
+                    ${star.alpha}
+                )`;
+
+
+            ctx.fill();
+
+        }
+
+    );
+
+
+    requestAnimationFrame(
+
+        animateStars
+
+    );
+
+}
+
+
+
+window.addEventListener(
+
+    "resize",
+
+    resizeCanvas
+
+);
+
+
+
+resizeCanvas();
+
+animateStars();
+
+
+
+/* =========================
+   滚动渐入动画
+========================== */
+
+
+const revealElements =
+
+document.querySelectorAll(
+
+    ".reveal"
+
+);
+
+
+
+const observer =
+
+new IntersectionObserver(
+
+    entries => {
+
+
+        entries.forEach(
+
+            entry => {
+
+
+                if (
+
+                    entry.isIntersecting
+
+                ) {
+
+
+                    entry.target
+                    .classList
+                    .add(
+                        "active"
+                    );
+
+                }
+
+
+            }
+
+        );
+
+
+    },
+
+    {
+
+        threshold:
+            0.15
+
+    }
+
+);
+
+
+
+revealElements
+.forEach(
+
+    element =>
+
+    observer.observe(
+        element
+    )
+
+);
+
+
+</script>
+
 
 </body>
 
